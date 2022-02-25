@@ -1,7 +1,14 @@
+import { ImagesController } from "./Controllers/ImagesController.js";
+import { QuotesController } from "./Controllers/QuotesController.js";
+import { TodoController } from "./Controllers/TodoController.js";
 import { ValuesController } from "./Controllers/ValuesController.js";
+import { WeatherController } from "./Controllers/WeatherController.js";
 
 class App {
-  valuesController = new ValuesController();
+  quotesController = new QuotesController();
+  weatherController = new WeatherController();
+  imagesController = new ImagesController();
+  todoController = new TodoController();
 }
 
 window["app"] = new App();
