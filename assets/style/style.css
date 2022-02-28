@@ -1,1 +1,15 @@
 /* BASIC STYLES HERE */
+.tall{
+  min-height: 80vh;
+}
+.text-view{
+  text-shadow: 3px 3px 4px #000000;;
+}
+/* .author{
+  display: none;
+}
+
+.quote:hover + .author{
+  display: block;
+  color: darkgray;
+} */
