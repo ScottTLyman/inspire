@@ -5,8 +5,8 @@ export class Quote {
   }
   get Template() {
     return `
-    <h4 class="content selectable">"${this.content}"</h4>
-    <h6 class="author">- ${this.author}</h6>
+    <h5 class="">"${this.content}"</h5>
+    <h6 class="hide-container"><span class="hide">- ${this.author}</span></h6>
     `
   }
 }

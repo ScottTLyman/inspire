@@ -30,17 +30,22 @@
           </div>
         </div>
         <div class="col-3 align-self-end">
-          <h3 class="text-light" id="todos">
+          <h3 class="text-light text-view">
             To Do:
           </h3>
-          <!-- <div class="d-flex justify-content-between bg-dark text-light text-center rounded p-2"> -->
-          <!-- <input class="form-check-input m-2" type="checkbox" value=""
-              onchange="app.tasksController.updateChecked('${this.id}')" ${this.Checked}>
-            <h6 class="align-self-center">${this.name}</h6>
-            <div class="mdi mdi-close-box-outline text-danger" onclick="app.tasksController.deleteTask('${this.id}')">
-            </div>
-          </div> -->
-          <form class="form-inline d-flex" onsubmit="app.todoController.createTodo()">
+          <h6 class="text-light text-view" id="todo-head">
+            <!-- <span>${this.Complete}/${this.Total}</span> -->
+          </h6>
+          <div class="max-h" id="todos">
+            <!-- <div class="d-flex justify-content-between text-light text-center rounded p-2">
+              <input class="form-check-input m-2" type="checkbox" value=""
+                onchange="app.todoController.updateComplete('${this.id}')" ${this.Complete}>
+              <h6 class="align-self-center text-view">${this.description}</h6>
+              <div class="mdi mdi-close-box-outline text-danger" onclick="app.todoController.deleteTodo('${this.id}')">
+              </div>
+            </div> -->
+          </div>
+          <form class="form-inline d-flex" onsubmit="app.todoController.createTodo(event)">
             <input class="form-control" type="text" minlength="3" maxlength="50" required placeholder="Add To Do..."
               name="todo" id="todo">
             <button class="btn btn-success fw-bold ms-1" type="submit">+</button>
@@ -49,7 +54,7 @@
       </div>
     </div>
   </main>
-  <footer class=" row text-light text-center text-view">
+  <footer class="row footer-height text-light text-center text-view">
     <div class="col-3"></div>
     <div class="col-6" id="quote">
 

@@ -1,47 +1,55 @@
 import { ProxyState } from "../AppState.js"
-import { api } from "../Services/AxiosService.js"
 import { todoService } from "../Services/TodoService.js"
 import { Pop } from "../Utils/Pop.js"
 
 function _drawTodo() {
-  let todos = ProxyState.todos
   let template = ''
-  todos.forEach(t => template += t.Template)
+  ProxyState.todos.forEach(t => template += t.Template)
   document.getElementById('todos').innerHTML = template
+  document.getElementById('todo-head').innerHTML = `${ProxyState.todos.filter(t => t.completed != '').length} / ${ProxyState.todos.length}`
 }
 
 
 export class TodoController {
   constructor() {
-    // ProxyState.on('todos', _drawTodo)
+    ProxyState.on('todos', _drawTodo)
+    this.getTodos()
   }
-  // async getTodos() {
-  //   try {
-  //     await todoService.getTodos()
-  //   } catch (error) {
-  //     Pop.toast(error)
-  //     console.log(error, 'error')
+  async createTodo() {
+    try {
+      window.event.preventDefault()
+      console.log('created todo')
+      let form = window.event.target
+      let newTodo = {
+        // @ts-ignore
+        description: form.todo.value
+      }
+      todoService.createTodo(newTodo)
+      // @ts-ignore
+      form.reset()
+    } catch (error) {
+      console.log('error', error)
+    }
+  }
+  async getTodos() {
+    try {
+      await todoService.getTodos()
+    } catch (error) {
+      Pop.toast(error)
+      console.log(error, 'error')
 
-  //   }
-  // }
+    }
+  }
   deleteTodo(todoId) {
     todoService.deleteTodo(todoId)
   }
-  createTodo(event) {
-    debugger
-    event.preventDefault()
-    console.log('created todo')
-    let form = event.target
-    let newTodo = {
-      description: form.todo.value
-    }
-    todoService.createTodo(newTodo)
-    form.reset()
-    console.error('error')
-  }
 
-  updateComplete(todoId) {
-    todoService.updateComplete(todoId)
+  async updateComplete(todoId) {
+    try {
+      todoService.updateComplete(todoId)
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 

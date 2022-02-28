@@ -5,11 +5,21 @@
 .text-view{
   text-shadow: 3px 3px 4px #000000;;
 }
-/* .author{
-  display: none;
+
+
+.footer-height{
+  height: 10vh
+}
+.hide{
+  opacity: 0;
+  transition: all .5s ease;
 }
 
-.quote:hover + .author{
-  display: block;
-  color: darkgray;
-} */
+.hide-container:hover .hide{
+  opacity: 1;
+}
+
+.max-h{
+  max-height: 15vh;
+  overflow-y: scroll;
+}
